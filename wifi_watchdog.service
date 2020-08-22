@@ -1,0 +1,16 @@
+[Unit]
+Description=Wifi Fluid-Watchdog service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+# Write here the path of wifi_watchdog_daemon.sh script
+ExecStart=/bin/bash /root/wifi_watchdog/wifi_watchdog_daemon.sh
+User=root
+Group=root
+Restart=on-failure
+RestartSec=60s
+
+[Install]
+WantedBy=multi-user.target
