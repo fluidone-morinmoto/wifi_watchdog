@@ -1,0 +1,1 @@
+ifconfig wlan0 down && systemctl daemon-reload && ifconfig wlan0 up && systemctl restart dhcpcd && service networking restart && service wifi_watchdog start
