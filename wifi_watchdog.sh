@@ -41,11 +41,11 @@ try_wifi () {
         ## Quotes password
         quoted_password="\"${password}\""
         ## Put password in array
-        list_of_passwords+=("${quoted_password}")
+        list_of_passwords+=("psk=${quoted_password}")
     done <<<$(cat ${passwords_file})
     ## Put the NONE keyword into array. It is used for a without password
     ## connection
-    list_of_passwords+=("NONE")
+    list_of_passwords+=("key_mgmt=NONE")
     log_message "${#list_of_passwords[@]} passwords in array"
 
     ## Collect wifi network names into a string
@@ -80,7 +80,7 @@ try_wifi () {
             echo "" >> "${wpa_supplicant_conf}"
             echo "network={" >> "${wpa_supplicant_conf}"
         	echo -e "\tssid=\"${network_name}\"" >> "${wpa_supplicant_conf}"
-        	echo -e "\tkey_mgmt=${password}" >> "${wpa_supplicant_conf}"
+        	echo -e "\t${password}" >> "${wpa_supplicant_conf}"
             echo "}" >> "${wpa_supplicant_conf}"
 
             log_message "Try ${network_name} with password ${password}"
