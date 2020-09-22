@@ -57,14 +57,14 @@ try_wifi () {
        array+=("${line}")
     done <<< "${string_of_networks}"
 
-    log_message ${string_of_networks}
+    #log_message ${string_of_networks}
     ## Trim strings and populate an array with network names
     list_of_networks=()
     for element in "${array[@]}"
     do
         name_of_network_to_trim="${element#"SSID: "}"
         name_of_network="$(echo -e "${name_of_network_to_trim}" | sed -e 's/^[[:space:]]*//')"
-        log_message "Detected: ${name_of_network}"
+        #log_message "Detected: ${name_of_network}"
         list_of_networks+=("${name_of_network}")
     done
 
@@ -129,7 +129,7 @@ try_wifi () {
 }
 
 ## Init the log file
-echo "$(date +"%Y-%m-%d %T") Starting Fluid-Wifi Watchdog service..." >> "${log}"
+echo "$(date +"%Y-%m-%d %T") Starting Fluid-Wifi Watchdog service..." > "${log}"
 ## Get the router ip. If it's not empty we assume to be connected
 router_ip=$(route -n | grep 'wlan0$' | grep '^0\.0\.0\.0' | awk '{print $2}')
 ## If router ip is empty start the try connection function

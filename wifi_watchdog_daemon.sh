@@ -17,7 +17,7 @@ wifi_watchdog_script="/root/wifi_watchdog/wifi_watchdog.sh"
 ## Infinite loop
 while [ 1 ]; do
     ## Define amount of seconds to sleep
-    sleeping_seconds=50
+    sleeping_seconds=600
     ## Get the wifi_watchdog.sh process ID
     process_id=`/bin/ps -fu $USER| grep "wifi_watchdog.sh" | grep -v "grep" | awk '{print $2}'`
     if [ -z "${process_id}" ]; then
