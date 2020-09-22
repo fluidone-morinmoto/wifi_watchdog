@@ -15,7 +15,7 @@
 ###############################################################################
 
 ## Version constant for versionig
-version="1.0.1-dev"
+version="1.0.1"
 ## Write here the path of log file
 log="/root/wifi_watchdog/wifi_watchdog.log"
 ## The WPA Supplicant Congifuration file's path
